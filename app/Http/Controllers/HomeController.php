@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,13 @@ class HomeController extends Controller
     public function index()
     {
         return view('admin.adminmaster');
+    }
+
+
+
+    public function posts(){
+        return User::find(1)->posts;
+        // return Post::all();
+
     }
 }
