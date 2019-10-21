@@ -31,8 +31,7 @@ class HomeController extends Controller
 
 
     public function posts(){
-        return User::find(1)->posts;
-        // return Post::all();
+        // return User::find(1)->posts;
 
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +16,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+    /**
+     *Return Data With User and Category
+     */
+        // return Post::with('user','category')->get();
+
+     /**
+     *Return Data With Posts based on User Id
+     */
+        return User::with('posts')->get();
+
     }
 
     /**

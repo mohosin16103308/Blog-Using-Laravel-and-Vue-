@@ -7,6 +7,10 @@
 
                     <div class="card-body">
                         I'm an example component.
+                        <router-link to="/posts">Go to Foo</router-link>
+                        <router-link to="/home">Go to Bar</router-link>
+                          <router-view></router-view>
+
                     </div>
                 </div>
             </div>
