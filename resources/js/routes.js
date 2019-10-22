@@ -1,6 +1,11 @@
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
+import AdminHome from './components/admin/AdminHome.vue';
+
+
 export const routes = [
-    { path: '/foo', component: Foo },
-    { path: '/bar', component: Bar }
+    {
+       path: '/home',
+       component: AdminHome
+
+    },
+    
   ]

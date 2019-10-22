@@ -233,28 +233,9 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" id="app">
-    <example-component></example-component>
-    <!-- Content Header (Page header) -->
-  
-    <!-- Main content -->
-    <section class="content">
 
-      <!-- Default box -->
-      <div class="card">
-      
-        <div class="card-body">
-          Start creating your amazing application!
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
-
-    </section>
-    <!-- /.content -->
+    <admin-master></admin-master>
+   
   </div>
   <!-- /.content-wrapper -->
 
