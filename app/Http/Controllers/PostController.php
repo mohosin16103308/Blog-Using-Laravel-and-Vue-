@@ -7,8 +7,53 @@ use App\User;
 use App\Category;
 use Illuminate\Http\Request;
 
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
+
+
 class PostController extends Controller
 {
+
+
+ public function checkout(Request $request)
+ {
+    // dd($request->all());
+    try {
+        Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+    
+        $customer = Customer::create(array(
+            'email' => $request->stripeEmail,
+            'source' => $request->stripeToken
+        ));
+    
+        $charge = Charge::create(array(
+            'customer' => $customer->id,
+            'amount' => 3000,
+            'currency' => 'usd'
+        ));
+    
+        return 'Charge successful, you get the course!';
+    } catch (\Exception $ex) {
+        return $ex->getMessage();
+    }
+ }
+
+
+    public function subscribe_process(Request $request)
+    {
+        try {
+            Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+    
+            $user = User::where('id', 1)->first();
+            $user->newSubscription('main', 'base')->create($request->stripeToken);
+    
+            return 'Subscription successful, you get the course!';
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *

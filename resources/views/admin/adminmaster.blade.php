@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -165,19 +166,18 @@
           </li>
         {{--  Category   --}}
         <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Category
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
+          <router-link to="/categories"  class="nav-link">
+               
+            <i class="far fa-circle nav-icon"></i>
+            <p>Category </p>
+          </router-link>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <router-link to="/categories"  class="nav-link">
+               
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
+                  <p>List </p>
+                </router-link>
               </li>
              
             </ul>
@@ -236,6 +236,14 @@
 
 <!-- jQuery -->
 <!-- Scripts -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  ></script> 
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
 <script src="{{ asset('js/app.js') }}" defer></script>
+$(document).ready(function() {
+  $('#example').DataTable();
+} );
 </body>
 </html>

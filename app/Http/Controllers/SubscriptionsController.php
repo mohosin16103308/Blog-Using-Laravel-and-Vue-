@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Subscriptions;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class SubscriptionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return $category;
+        //
     }
 
     /**
@@ -36,25 +35,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-          // Validate the request...
-          $this->validate($request, [
-            'cat_name' => 'required',
-        ]);
-          $category = new Category;
-
-          $category->cat_name = $request->cat_name;
-  
-          $category->save();
-          return "OKK";
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Subscriptions  $subscriptions
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Subscriptions $subscriptions)
     {
         //
     }
@@ -62,10 +52,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Subscriptions  $subscriptions
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Subscriptions $subscriptions)
     {
         //
     }
@@ -74,10 +64,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Subscriptions  $subscriptions
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Subscriptions $subscriptions)
     {
         //
     }
@@ -85,10 +75,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Subscriptions  $subscriptions
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Subscriptions $subscriptions)
     {
         //
     }

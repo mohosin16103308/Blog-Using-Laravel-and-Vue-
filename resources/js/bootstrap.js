@@ -13,6 +13,10 @@ try {
     require('bootstrap');
     // Add Admin Lte
     require('admin-lte');
+    // Add Admin Lte
+    require('admin-lte/plugins/datatables/jquery.dataTables.js');
+    // Add Admin Lte
+    require('admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js');
 } catch (e) {}
 
 /**

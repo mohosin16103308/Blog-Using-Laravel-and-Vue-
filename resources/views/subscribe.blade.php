@@ -85,12 +85,12 @@
                 </div>
 
                 <div class="links">
-                    <form action="/charge" method="POST">
+                    <form action="/subscribe_process" method="post">
                         {{ csrf_field() }}
                         <script
                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                 data-key="pk_test_LhZR6zhsvDvaKd4RFgvLL5Rt00Iak1V65A"
-                                data-amount="20020"
+                                data-amount="1000"
                                 data-name="Stripe Demo"
                                 data-description="Online course about integrating Stripe"
                                 data-image="https://stripe.com/img/documentation/checkout/marketplace.png"

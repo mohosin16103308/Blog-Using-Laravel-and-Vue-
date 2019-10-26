@@ -17,6 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
 
 Route::get('/{anypath}', 'HomeController@index')->where('path','.*');
+
+Route::post('/add/category', 'CategoryController@store')->name('addcategory');
+
+Route::post('/add/category', 'CategoryController@store')->name('addcategory');
+Route::get('/list/category', 'CategoryController@index')->name('listcategory');
+
+
+
+// Route::get('posts', 'PostController@index')->name('home');
+
+Route::post('/charge', 'PostController@checkout');
+
+Route::get('/subscribe', function () {
+    return view('subscribe');
+});
+Route::post('/subscribe_process', 'PostController@subscribe_process');
