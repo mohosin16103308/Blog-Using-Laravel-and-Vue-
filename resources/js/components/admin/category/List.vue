@@ -14,18 +14,21 @@
           <table id="example" class="display" style="width:100%">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in items">
+              <tr v-for="item in getVueItems()">
+                <td>{{ item.id }}</td>
                 <td>{{ item.cat_name }}</td>
                 <td><a href="#">EDIT</a> || <a href="#">DELETE</a></td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Action</th>
               </tr>
@@ -39,26 +42,20 @@
 </template>
 <script>
 export default {
-  data() {
-    return {
-      // Create a new form instance
-      form: new Form({
-        cat_name: ""
-      }),
-      items: []
-    };
-  },
- mounted: function mounted() {
-    this.getVueItems();
+
+ computed: {
+
+     getAllcats(){
+      store.dispatch("allCategoryList");
+     }
   },
   methods: {
     getVueItems() {
-      var _this = this;
-
-      axios.get("/list/category").then(function(response) {
-        _this.items = response.data;
-      });
+        // state.items = store.getters.getCategories;
+        return store.getters.getCategories;
     }
   }
 };
 </script>
+
+     

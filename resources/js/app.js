@@ -9,8 +9,23 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import {routes} from './routes';
+import Vuex from 'vuex';
+
 
 Vue.use(VueRouter)
+
+Vue.use(Vuex)
+
+import storeData from './store/index';
+// Make sure to call Vue.use(Vuex) first if using a module system
+
+const store = new Vuex.Store(
+  storeData
+)
+
+
+
+window.store = store
 
 // V-Form ********************** 
 import { Form, HasError, AlertError } from 'vform';
@@ -59,5 +74,6 @@ Vue.component('admin-master', require('./components/admin/AdminMaster.vue').defa
 //     router
 // });
 const app = new Vue({
-    router
+    router,
+    storeData
   }).$mount('#app')
