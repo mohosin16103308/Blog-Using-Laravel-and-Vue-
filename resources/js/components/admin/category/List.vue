@@ -23,7 +23,7 @@
               <tr v-for="item in getVueItems()">
                 <td>{{ item.id }}</td>
                 <td>{{ item.cat_name }}</td>
-                <td><a href="#">EDIT</a> || <a href="#">DELETE</a></td>
+                <td><a href="#">EDIT</a> ||  <a href="" @click.prevent="deleteCat(item.id)">DELETE</a></td>
               </tr>
             </tbody>
             <tfoot>
@@ -53,6 +53,16 @@ export default {
     getVueItems() {
         // state.items = store.getters.getCategories;
         return store.getters.getCategories;
+    },
+
+    deleteCat(id){
+      axios.get("/delete/category/"+id).then(function(response) {
+            //    console.log(response.status);
+            if(response.status == 200){
+                      store.dispatch("allCategoryList");
+
+            }
+            });
     }
   }
 };

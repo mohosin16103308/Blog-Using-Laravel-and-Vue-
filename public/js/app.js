@@ -17577,6 +17577,14 @@ __webpack_require__.r(__webpack_exports__);
     getVueItems: function getVueItems() {
       // state.items = store.getters.getCategories;
       return store.getters.getCategories;
+    },
+    deleteCat: function deleteCat(id) {
+      axios.get("/delete/category/" + id).then(function (response) {
+        //    console.log(response.status);
+        if (response.status == 200) {
+          store.dispatch("allCategoryList");
+        }
+      });
     }
   }
 });
@@ -69513,13 +69521,29 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(item.cat_name))]),
                       _vm._v(" "),
-                      _vm._m(1, true)
+                      _c("td", [
+                        _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")]),
+                        _vm._v(" ||  "),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.deleteCat(item.id)
+                              }
+                            }
+                          },
+                          [_vm._v("DELETE")]
+                        )
+                      ])
                     ])
                   }),
                   0
                 ),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(1)
               ]
             )
           ])
@@ -69542,16 +69566,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("EDIT")]),
-      _vm._v(" || "),
-      _c("a", { attrs: { href: "#" } }, [_vm._v("DELETE")])
     ])
   },
   function() {
@@ -86047,15 +86061,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************************!*\
   !*** ./resources/js/components/admin/category/List.vue ***!
   \*********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _List_vue_vue_type_template_id_35f26ef4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./List.vue?vue&type=template&id=35f26ef4& */ "./resources/js/components/admin/category/List.vue?vue&type=template&id=35f26ef4&");
 /* harmony import */ var _List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./List.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/category/List.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _List_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -86085,7 +86098,7 @@ component.options.__file = "resources/js/components/admin/category/List.vue"
 /*!**********************************************************************************!*\
   !*** ./resources/js/components/admin/category/List.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
