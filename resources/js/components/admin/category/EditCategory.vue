@@ -3,7 +3,7 @@
     <!-- Main content -->
     <section class="content">
       <center class="center text-primary">
-        <h1>Add New Category</h1>
+        <h1>Edit Category</h1>
       </center>
       <div class="row justify-content-around">
         <div class="card">
@@ -14,7 +14,7 @@
               <!-- form start -->
               <p id="s"></p>
 
-              <form @submit.prevent="addCategory" @keydown="form.onKeydown($event)">
+              <form @submit.prevent="updateCategory" @keydown="form.onKeydown($event)">
                 <div class="form-group">
                   <label>Category Name</label>
                   <input
@@ -54,7 +54,7 @@ export default {
   },
 
   methods: {
-    addCategory () {
+    updateCategory () {
       // Submit the form via a POST request
       this.form.post('/add/category')
         .then(({ data }) => { 

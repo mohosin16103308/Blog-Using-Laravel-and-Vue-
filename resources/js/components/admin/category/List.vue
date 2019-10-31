@@ -23,7 +23,7 @@
               <tr v-for="item in getVueItems()">
                 <td>{{ item.id }}</td>
                 <td>{{ item.cat_name }}</td>
-                <td><a href="#">EDIT</a> ||  <a href="" @click.prevent="deleteCat(item.id)">DELETE</a></td>
+                <td><router-link  :to="`/edit/category/${item.id}`"  class="btn btn-primary">Edit</router-link> ||  <a href="" @click.prevent="deleteCat(item.id)">DELETE</a></td>
               </tr>
             </tbody>
             <tfoot>
@@ -46,10 +46,13 @@ export default {
  computed: {
 
      getAllcats(){
+
       store.dispatch("allCategoryList");
-     }
+
+     },
   },
   methods: {
+
     getVueItems() {
         // state.items = store.getters.getCategories;
         return store.getters.getCategories;
@@ -63,7 +66,16 @@ export default {
 
             }
             });
-    }
+    },
+    editCat(){
+axios.get("/edit/category/"+id).then(function(response) {
+            //    console.log(response.status);
+            if(response.status == 200){
+                      // store.dispatch("allCategoryList");
+
+            }
+            });
+    },
   }
 };
 </script>
