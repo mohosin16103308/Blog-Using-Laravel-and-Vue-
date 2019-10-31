@@ -3,7 +3,7 @@
     <!-- Main content -->
     <section class="content">
       <center class="center text-primary">
-        <h1>Edit Category</h1>
+        <h1>Edit Category {{ this.$route.params.id }}</h1>
       </center>
       <div class="row justify-content-around">
         <div class="card">
@@ -15,7 +15,7 @@
               <p id="s"></p>
 
               <form @submit.prevent="updateCategory" @keydown="form.onKeydown($event)">
-                <div class="form-group">
+               <div class="form-group">
                   <label>Category Name</label>
                   <input
                     v-model="form.cat_name"
@@ -39,35 +39,59 @@
   </div>
 </template>
 <script>
-
 export default {
 
 
-  
-  data () {
+  data() {
+
+
     return {
       // Create a new form instance
       form: new Form({
-        cat_name: '',
-      })
-    }
+        cat_name: ""
+      }),
+    };
   },
 
-  methods: {
-    updateCategory () {
-      // Submit the form via a POST request
-      this.form.post('/add/category')
-        .then(({ data }) => { 
-            console.log(data) 
-            document.getElementById('s').textContent="Data Successfully Save";
-            })
-        .catch(()=>{
-                       document.getElementById('s').textContent="Solve Error";
+  computed: {
+    editcats() {
+      console.log("EDIT");
+    }
+  },
+  mounted()  {
+    // console.log(this.getCate());
+    let uri = `/category/edit/${this.$route.params.id}`;
+      axios.get(uri).then((response) => {
+if (response.status == 200) {
+        // this.form.cat_name = 'dd';
+        this.form.fill(response.data.category);
+          // console.log(response.data.cat_name);
+          // this.catetory_name = response.data.cat_name;
+          //  console.log(this.catetory_name);
 
+        }
+      });
+      
+
+     
+  },
+  methods: {
+  
+    updateCategory() {
+      // Submit the form via a POST request
+      let uri_update = `/update/category/${this.$route.params.id}`;
+      // console.log(uri);
+      this.form
+        .post(uri_update)
+        .then(({ data }) => {
+          console.log(data);
+          document.getElementById("s").textContent = "Data Successfully Save";
+        })
+        .catch(() => {
+          document.getElementById("s").textContent = "Solve Error";
         });
-        store.dispatch("allCategoryList");
+      store.dispatch("allCategoryList");
     }
   }
-  
 };
 </script>

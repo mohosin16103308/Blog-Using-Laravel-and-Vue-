@@ -17571,19 +17571,41 @@ __webpack_require__.r(__webpack_exports__);
     return {
       // Create a new form instance
       form: new Form({
-        cat_name: ''
+        cat_name: ""
       })
     };
+  },
+  computed: {
+    editcats: function editcats() {
+      console.log("EDIT");
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    // console.log(this.getCate());
+    var uri = "/category/edit/".concat(this.$route.params.id);
+    axios.get(uri).then(function (response) {
+      if (response.status == 200) {
+        // this.form.cat_name = 'dd';
+        _this.form.fill(response.data.category); // console.log(response.data.cat_name);
+        // this.catetory_name = response.data.cat_name;
+        //  console.log(this.catetory_name);
+
+      }
+    });
   },
   methods: {
     updateCategory: function updateCategory() {
       // Submit the form via a POST request
-      this.form.post('/add/category').then(function (_ref) {
+      var uri_update = "/update/category/".concat(this.$route.params.id); // console.log(uri);
+
+      this.form.post(uri_update).then(function (_ref) {
         var data = _ref.data;
         console.log(data);
-        document.getElementById('s').textContent = "Data Successfully Save";
+        document.getElementById("s").textContent = "Data Successfully Save";
       })["catch"](function () {
-        document.getElementById('s').textContent = "Solve Error";
+        document.getElementById("s").textContent = "Solve Error";
       });
       store.dispatch("allCategoryList");
     }
@@ -69566,7 +69588,7 @@ var render = function() {
       { staticClass: "content" },
       [
         _c("center", { staticClass: "center text-primary" }, [
-          _c("h1", [_vm._v("Edit Category")])
+          _c("h1", [_vm._v("Edit Category " + _vm._s(this.$route.params.id))])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "row justify-content-around" }, [

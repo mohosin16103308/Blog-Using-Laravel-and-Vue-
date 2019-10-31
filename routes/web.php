@@ -22,9 +22,12 @@ Route::get('/{anypath}', 'HomeController@index')->where('path','.*');
 
 Route::post('/add/category', 'CategoryController@store')->name('addcategory');
 
-Route::post('/add/category', 'CategoryController@store')->name('addcategory');
+Route::get('/category/edit/{id}', 'CategoryController@edit');
+
+Route::post('/update/category/{id}','CategoryController@update')->name('updateCategory');
 Route::get('/list/category', 'CategoryController@index')->name('listcategory');
 Route::get("/delete/category/{id}",'CategoryController@destroy')->name('cat_delete');
+
 
 // Route::get('posts', 'PostController@index')->name('home');
 

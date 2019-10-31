@@ -68,9 +68,14 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        //
+       $category = Category::where('id', $id)->first();
+    //    die($category->cat_name);
+       return response()->json(
+        [
+             "category" => $category
+        ],200);
     }
 
     /**
@@ -80,9 +85,17 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request,$id)
     {
-        //
+         // Validate the request...
+         $this->validate($request, [
+            'cat_name' => 'required',
+        ]);
+           $category = Category::find($id);
+          $category->cat_name = $request->cat_name;
+  
+          $category->update();
+          return "Update Successfully";
     }
 
     /**
