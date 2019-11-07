@@ -15,6 +15,22 @@ use Stripe\Charge;
 class PostController extends Controller
 {
 
+ /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $category = Post::orderBy('id', 'DESC')->get();
+        return response()->json(
+           [
+                "posts" => $category
+           ],200);
+    }
+
+
+
 
  public function checkout(Request $request)
  {
@@ -54,24 +70,7 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    /**
-     *Return Data With User and Category
-     */
-        // return Post::with('user','category')->get();
-
-     /**
-     *Return Data With Posts based on User Id
-     */
-        return User::with('posts')->get();
-
-    }
+   
 
     /**
      * Show the form for creating a new resource.

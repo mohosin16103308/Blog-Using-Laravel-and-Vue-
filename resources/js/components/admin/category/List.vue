@@ -44,9 +44,8 @@
 export default {
 
  computed: {
-
      getAllcats(){
-
+console.log("Hello");
       store.dispatch("allCategoryList");
 
      },
@@ -54,6 +53,8 @@ export default {
   methods: {
 
     getVueItems() {
+            store.dispatch("allCategoryList");
+
         // state.items = store.getters.getCategories;
         return store.getters.getCategories;
     },

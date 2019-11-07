@@ -37,3 +37,8 @@ Route::get('/subscribe', function () {
     return view('subscribe');
 });
 Route::post('/subscribe_process', 'PostController@subscribe_process');
+
+
+//Posts
+// Get All Posts  
+ Route::get('/list/posts', 'PostController@index');

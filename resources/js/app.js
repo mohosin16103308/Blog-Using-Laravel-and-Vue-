@@ -12,9 +12,10 @@ import {routes} from './routes';
 import Vuex from 'vuex';
 
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-Vue.use(Vuex)
+Vue.use(Vuex);
+
 
 import storeData from './store/index';
 // Make sure to call Vue.use(Vuex) first if using a module system
