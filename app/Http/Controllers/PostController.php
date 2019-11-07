@@ -22,10 +22,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $category = Post::orderBy('id', 'DESC')->get();
+        $post = Post::with('category')->get();
         return response()->json(
            [
-                "posts" => $category
+                "posts" => $post
            ],200);
     }
 

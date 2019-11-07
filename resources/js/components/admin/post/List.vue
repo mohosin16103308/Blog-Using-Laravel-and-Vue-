@@ -18,12 +18,15 @@
                 <tr role="row">
                   <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 277.95px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID</th>
                   <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 358.783px;" aria-label="Browser: activate to sort column ascending">Name</th>
+                  <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 358.783px;" aria-label="Browser: activate to sort column ascending">ategory Name</th>
                   <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 172.717px;" aria-label="CSS grade: activate to sort column ascending">ACTION</th></tr>
                 </thead>
                 <tbody>
              <tr v-for="item in getVueItems()" role="row" class="odd">
                 <td>{{ item.id }}</td>
                 <td>{{ item.title }}</td>
+              <td v-if="item.category">{{ item.category.cat_name }}</td>
+              <td v-else>No Cat</td>
                 <td><router-link  :to="`/edit/post/${item.id}`"  class="btn btn-primary">Edit</router-link> ||  <a href="" @click.prevent="deleteCat(item.id)">DELETE</a></td>
               </tr>
 
@@ -55,7 +58,6 @@ export default {
 
     getVueItems() {
             store.dispatch("allPostList");
-
         // state.items = store.getters.getCategories;
         return store.getters.getPosts;
 

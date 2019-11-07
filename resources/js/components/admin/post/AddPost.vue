@@ -28,7 +28,7 @@
                 </div>
 
 
-                <button :disabled="form.busy" type="submit" class="btn btn-primary">Add Category</button>
+                <button :disabled="form.busy" type="submit" class="btn btn-primary">Add Posts</button>
               </form>
             </div>
           </div>

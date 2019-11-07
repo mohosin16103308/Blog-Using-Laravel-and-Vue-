@@ -17836,6 +17836,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     getAllposts: function getAllposts() {
@@ -70088,7 +70091,7 @@ var render = function() {
                           staticClass: "btn btn-primary",
                           attrs: { disabled: _vm.form.busy, type: "submit" }
                         },
-                        [_vm._v("Add Category")]
+                        [_vm._v("Add Posts")]
                       )
                     ]
                   )
@@ -70181,6 +70184,12 @@ var render = function() {
                                 _c("td", [_vm._v(_vm._s(item.id))]),
                                 _vm._v(" "),
                                 _c("td", [_vm._v(_vm._s(item.title))]),
+                                _vm._v(" "),
+                                item.category
+                                  ? _c("td", [
+                                      _vm._v(_vm._s(item.category.cat_name))
+                                    ])
+                                  : _c("td", [_vm._v("No Cat")]),
                                 _vm._v(" "),
                                 _c(
                                   "td",
@@ -70278,6 +70287,22 @@ var staticRenderFns = [
             }
           },
           [_vm._v("Name")]
+        ),
+        _vm._v(" "),
+        _c(
+          "th",
+          {
+            staticClass: "sorting",
+            staticStyle: { width: "358.783px" },
+            attrs: {
+              tabindex: "0",
+              "aria-controls": "example1",
+              rowspan: "1",
+              colspan: "1",
+              "aria-label": "Browser: activate to sort column ascending"
+            }
+          },
+          [_vm._v("ategory Name")]
         ),
         _vm._v(" "),
         _c(
